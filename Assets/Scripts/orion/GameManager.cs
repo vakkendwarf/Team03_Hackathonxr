@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
             {
                 CompleteTask(recObj.GetComponent<PickupableM>().task);
             }
+            else
+            {
+                //mum throws shoe and shouts --
+                recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
+            }
         }
     }
 
