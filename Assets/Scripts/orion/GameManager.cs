@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     List<t_Task> tasksDone;
     GameObject mum;
+    TextMesh subtitles;
 
     void Start()
     {
@@ -49,10 +50,13 @@ public class GameManager : MonoBehaviour
             switch (task)
             {
                 case t_Task.t_trousers:
-                    //mum play voice
-                    Debug.Log("trousers delivered");
+                    subtitles.text = "Now collect your trash!";
                     break;
-                case t_Task.t_towel:
+                case t_Task.t_trash:
+                    subtitles.text = "Now collect your books!";
+                    break;
+                case t_Task.t_books:
+                    subtitles.text = "Good job! Your room is finally clean!";
                     break;
                 default:
                     break;
