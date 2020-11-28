@@ -18,13 +18,14 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void OnItemDeliver(GameObject recObj, GameObject storage)
+    public bool OnItemDeliver(GameObject recObj, GameObject storage)
     {
         if (recObj.tag == "Grabbable")
         {
             if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage)
             {
                 CompleteTask(recObj.GetComponent<PickupableM>().task);
+                return true;
             }
             else
             {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
                 recObj.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
+        return false;
     }
 
     void CompleteTask(t_Task task)

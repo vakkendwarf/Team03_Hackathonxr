@@ -12,20 +12,20 @@ public class ItemStorage : MonoBehaviour
     public int positionsZ = 2;
     //public GameObject collider;
 
-    private int currentPos = 0;
+    /*private int currentPos = 0;
 
-    private Vector3 position;
+    private Vector3 position;*/
 
     public void Start() {
-        //collider = gameObject.GetComponentInParent<BoxCollider>().gameObject;
-        position = transform.position;
+        // collider = gameObject.GetComponentInParent<BoxCollider>().gameObject;
+        // position = transform.position;
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Grabbable")) {
             /*PlaceObject(other.gameObject);*/
-            manager.GetComponent<GameManager>().OnItemDeliver(other.gameObject, gameObject);
-            other.gameObject.SetActive(false);
+            if (manager.GetComponent<GameManager>().OnItemDeliver(other.gameObject, gameObject))
+                other.gameObject.SetActive(false);
         }
     }
 

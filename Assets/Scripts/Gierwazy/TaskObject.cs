@@ -9,6 +9,5 @@ public class TaskObject : MonoBehaviour
    
     private void OnDisable() {
         sibling.SetActive(true);
-        //sibling.GetComponent<Rigidbody>().isKinematic = false;
     }
 }
