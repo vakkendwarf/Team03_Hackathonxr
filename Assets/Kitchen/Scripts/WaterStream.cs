@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WaterStream : MonoBehaviour
 {
+	public float cleaningTimeSec = 2f;
+	public float cleaningDistance = 5f;
+
+
 	void OnCollisionEnter(Collision collision)
 	{
 		Debug.Log("colliding with water");
@@ -19,34 +23,15 @@ public class WaterStream : MonoBehaviour
 		}
 	}
 
-
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("colliding with water");
-
-        var dish = other.gameObject.GetComponent<Dish>();
-        if (dish)
-        {
-            if (dish.isDirty && !dish.isCurrentlyBeingCleaned)
-            {
-                dish.isCurrentlyBeingCleaned = true;
-                StartCoroutine(CheckDistance(dish));
-            }
-        }
-    }
-
-
-
-    private IEnumerator CheckDistance(Dish dish)
+	private IEnumerator CheckDistance(Dish dish)
 	{
 		Debug.Log($"check distance start");
-		float secs = 2;
-		var minDistance = 5f;
 		float checkTime = 0.1f;
-		for (float i = 0; i < secs; i += checkTime)
+		for (float i = 0; i < cleaningTimeSec; i += checkTime)
 		{
-			Debug.Log($"checking for time {i}");
-			if ((dish.gameObject.transform.position - transform.position).magnitude > minDistance)
+			var dist = (dish.gameObject.transform.position - transform.position).magnitude;
+			Debug.Log($"checking for time {i} distance {dist} ");
+			if (dist > cleaningDistance)
 			{
 				dish.isCurrentlyBeingCleaned = false;
 				Debug.Log($"interrupted washing");
