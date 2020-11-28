@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public TextMesh subtitles;
     t_Task currTask = t_Task.t_socks;
 
+    public GameObject bookHandler;
+
     void Start()
     {
         tasksDone = new List<t_Task>();
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(7f);
         subtitles.text = "Start with sorting dirty clothes. \nPut your socks in the dirty clothes basket.";
     }
+
+    string[] yiellings = {
+        "No! You are not listening to me!"
+    };
 
     IEnumerator ShowCurrTask()
     {
@@ -63,13 +69,22 @@ public class GameManager : MonoBehaviour
     {
         if (recObj.tag == "Grabbable")
         {
-            if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage && currTask == recObj.GetComponent<PickupableM>().task)
+            if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage )
             {
-                CompleteTask(recObj.GetComponent<PickupableM>().task);
-                return true;
+                if (currTask == t_Task.t_books) {
+                    if (bookHandler.GetComponent<BookHandler>().BookOnPlace(recObj)) {
+                        CompleteTask(recObj.GetComponent<PickupableM>().task);
+                    }
+                    return true;
+                }
+                else if (currTask == recObj.GetComponent<PickupableM>().task) {
+                    CompleteTask(recObj.GetComponent<PickupableM>().task);
+                    return true;
+                }
             }
             else
             {
+                subtitles.text = yiellings[(int)Mathf.Floor(Random.value * yiellings.Length)];
                 subtitles.text = "No! You are not listening to me!";
                 recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
                 recObj.GetComponent<Rigidbody>().isKinematic = false;
