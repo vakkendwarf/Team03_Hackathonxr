@@ -5,7 +5,7 @@ using UnityEngine;
 public enum t_Task : uint
 {
     t_begin = 0,
-    t_trousers = t_begin + 1,
+    t_socks = t_begin + 1,
     t_underwear = t_begin + 2,
     t_tshirt = t_begin + 3,
     t_trash = t_begin + 4,

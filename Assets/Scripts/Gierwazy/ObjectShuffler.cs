@@ -12,9 +12,13 @@ public class ObjectShuffler : MonoBehaviour
     {
         foreach(GameObject obj in objectsToShuffle) {
             var spawnBox = transform.localScale;
-            Vector3 position = new Vector3(Random.value * spawnBox.x, Random.value * spawnBox.x, Random.value * spawnBox.x);
-            position = transform.TransformPoint(position - spawnBox / 2);
-            obj.transform.position = position;
+            Vector3 boundary = new Vector3(Random.value * spawnBox.x, Random.value * spawnBox.y, Random.value * spawnBox.z);
+            //position = transform.TransformPoint(boundary - spawnBox / 2);
+            obj.GetComponent<Rigidbody>().isKinematic = true;
+            obj.transform.position = transform.TransformPoint(boundary - spawnBox / 2);
+            obj.GetComponent<TaskObject>().RandomizeColor();
+
+            obj.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
