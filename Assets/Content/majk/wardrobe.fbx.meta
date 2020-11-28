@@ -1,16 +1,52 @@
 fileFormatVersion: 2
-guid: f2dfaf236d6acfa47a3086dcc5d7ff94
+guid: 147b55289722f2446a6184471b75c5b4
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Material
-    2100002: Material.001
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    2186277476908879412: ImportLogs
+    100000: Cube
+    100002: Cube.001
+    100004: Cube.002
+    100006: Cube.003
+    100008: leftdoor
+    100010: leftdoor_end
+    100012: rightdoor
+    100014: rightdoor_end
+    100016: root
+    100018: skeleton
+    100020: wardrobe
+    100022: //RootNode
+    400000: Cube
+    400002: Cube.001
+    400004: Cube.002
+    400006: Cube.003
+    400008: leftdoor
+    400010: leftdoor_end
+    400012: rightdoor
+    400014: rightdoor_end
+    400016: root
+    400018: skeleton
+    400020: //RootNode
+    400022: wardrobe
+    2100000: Material.001
+    2100002: Material.004
+    2100004: Material.003
+    2100006: Material.002
+    2100008: Material
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cube.003
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cube.003
+    4300000: wardrobe
+    4300002: Cube
+    4300004: Cube.001
+    4300006: Cube.002
+    4300008: Cube.003
+    9500000: //RootNode
+    13700000: wardrobe
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -63,8 +99,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -91,7 +127,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
