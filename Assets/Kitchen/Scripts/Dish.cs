@@ -10,11 +10,15 @@ public class Dish : MonoBehaviour
 	public Material dirtyDishMaterial;
 	public bool isCurrentlyBeingCleaned;
 
+    private Renderer renderer;
+
+
 	public void CleanUpDish()
 	{
-		if (cleanDishMaterial)
+
+        if (cleanDishMaterial)
 		{
-			GetComponent<Renderer>().material = cleanDishMaterial;
+            renderer.material = cleanDishMaterial;
 			isDirty = false;
 		}
 	}
@@ -23,9 +27,11 @@ public class Dish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
 	{
-		if (cleanDishMaterial)
+        renderer = GetComponent<Renderer>();
+
+        if (cleanDishMaterial)
 		{
-			GetComponent<Renderer>().material = dirtyDishMaterial;
+            renderer.material = dirtyDishMaterial;
 			isDirty = true;
 		}
 	}
@@ -33,6 +39,10 @@ public class Dish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!isDirty)
+        {
+            if(renderer.material == dirtyDishMaterial)
+                renderer.material = cleanDishMaterial;
+        }
     }
 }
