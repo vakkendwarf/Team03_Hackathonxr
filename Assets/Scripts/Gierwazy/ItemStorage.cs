@@ -7,7 +7,7 @@ public class ItemStorage : MonoBehaviour
 
    
 
-    public GameManager manager;
+    public GameObject manager;
 
     private HashSet<GameObject> insideObjects;
     private Vector3 position;
@@ -28,7 +28,7 @@ public class ItemStorage : MonoBehaviour
                 other.GetComponent<Rigidbody>().isKinematic = true;
                 other.transform.position = position;
                 Debug.Log(other.name);
-                //manager.OnItemDeliver(other.gameObject, gameObject.GetComponentInParent);
+                manager.GetComponent<GameManager>().OnItemDeliver(other.gameObject, gameObject);
             }
         }
     }
