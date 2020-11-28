@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum DishState
+{
+	Clean,
+	Dirty,
+	Cleaning,
+	Dried,
+}
+
 public class Dish : MonoBehaviour
 {
-	public bool isDirty;
-
-	public bool isCurrentlyBeingCleaned;
+	public DishState state;
 
 
 	public void CleanUpDish()
 	{
+		state = DishState.Clean;
 		Destroy(transform.GetChild(0).gameObject);
 	}
 
@@ -18,7 +26,7 @@ public class Dish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
 	{
-		isDirty = true;
+		state = DishState.Dirty;
 	}
 
     // Update is called once per frame

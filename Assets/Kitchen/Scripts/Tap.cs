@@ -31,7 +31,6 @@ public class Tap : MonoBehaviour
 	public void Open()
 	{
 		var waterStream = GameObject.Find("water_stream");
-		waterStream.GetComponent<MeshRenderer>().enabled = true;
 		waterStream.GetComponent<BoxCollider>().enabled = true;
 		particleSystem.Play();
 	}
@@ -39,7 +38,6 @@ public class Tap : MonoBehaviour
 	public void Close()
 	{
 		var waterStream = GameObject.Find("water_stream");
-		waterStream.GetComponent<MeshRenderer>().enabled = false;
 		waterStream.GetComponent<BoxCollider>().enabled = false;
 		particleSystem.Stop();
 	}

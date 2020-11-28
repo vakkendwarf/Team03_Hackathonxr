@@ -6,19 +6,24 @@ ModelImporter:
     100000: //RootNode
     100002: tap
     100004: water_stream
+    100006: tap_wheel
     400000: //RootNode
     400002: tap
     400004: water_stream
+    400006: tap_wheel
     2100000: No Name
     2300000: //RootNode
     2300002: tap
     2300004: water_stream
+    2300006: tap_wheel
     3300000: //RootNode
     3300002: tap
     3300004: water_stream
+    3300006: tap_wheel
     4300000: sink
     4300002: tap
     4300004: water_stream
+    4300006: tap_wheel
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -4,24 +4,8 @@ using UnityEngine;
 
 public class WaterStream : MonoBehaviour
 {
-	public float cleaningTimeSec = 2f;
+	public float cleaningTimeSec = 12f;
 	public float cleaningDistance = 5f;
-
-
-	void OnCollisionEnter(Collision collision)
-	{
-		Debug.Log("colliding with water");
-
-		var dish = collision.gameObject.GetComponent<Dish>();
-		if (dish)
-		{
-			if (dish.isDirty && !dish.isCurrentlyBeingCleaned)
-			{
-				dish.isCurrentlyBeingCleaned = true;
-				StartCoroutine(CheckDistance(dish));
-			}
-		}
-	}
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -30,9 +14,9 @@ public class WaterStream : MonoBehaviour
 		var dish = other.gameObject.GetComponent<Dish>();
 		if (dish)
 		{
-			if (dish.isDirty && !dish.isCurrentlyBeingCleaned)
+			if (dish.state == DishState.Dirty)
 			{
-				dish.isCurrentlyBeingCleaned = true;
+				dish.state = DishState.Cleaning;
 				StartCoroutine(CheckDistance(dish));
 			}
 		}
@@ -40,6 +24,7 @@ public class WaterStream : MonoBehaviour
 
 	private IEnumerator CheckDistance(Dish dish)
 	{
+
 		Debug.Log($"check distance start");
 		float checkTime = 0.1f;
 		for (float i = 0; i < cleaningTimeSec; i += checkTime)
@@ -48,14 +33,14 @@ public class WaterStream : MonoBehaviour
 			Debug.Log($"checking for time {i} distance {dist} ");
 			if (dist > cleaningDistance)
 			{
-				dish.isCurrentlyBeingCleaned = false;
+				dish.state = DishState.Dirty;
 				Debug.Log($"interrupted washing");
 				break;
 			}
 			yield return new WaitForSeconds(checkTime);
 		}
 
-		if (dish.isCurrentlyBeingCleaned)
+		if (dish.state == DishState.Cleaning)
 		{
 			Debug.Log($"cleaned dish");
 			// successfully cleaned dish
