@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8972595169292622865}
   - component: {fileID: 8972595169293950001}
   - component: {fileID: 8972595169295048433}
+  - component: {fileID: 5236846797565962348}
   m_Layer: 0
   m_Name: dirt
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5236846797565962348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972595169292779569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07145668, y: 0.075463235, z: 0.033649623}
+  m_Center: {x: -0.0005566646, y: -0.0020597982, z: -0.001100377}
 --- !u!1 &8972595169292779571
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +105,8 @@ GameObject:
   - component: {fileID: 8972595171125654424}
   - component: {fileID: 8972595171125654425}
   - component: {fileID: 8972595171125654430}
-  - component: {fileID: 720980442951969514}
-  - component: {fileID: 6911081210405207141}
+  - component: {fileID: 8668593286942707249}
+  - component: {fileID: 1966960507727924552}
   m_Layer: 0
   m_Name: dish
   m_TagString: Grabbable
@@ -109,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 8972595169292779571}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 3.5800521, y: 1.43, z: 1.9642434}
-  m_LocalScale: {x: 20, y: 20, z: 2}
+  m_LocalScale: {x: 100, y: 100, z: 19.737864}
   m_Children:
   - {fileID: 8972595169292622865}
   m_Father: {fileID: 0}
@@ -203,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDirty: 0
   isCurrentlyBeingCleaned: 0
---- !u!114 &720980442951969514
+--- !u!114 &8668593286942707249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMode: 0
---- !u!114 &6911081210405207141
+--- !u!114 &1966960507727924552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
