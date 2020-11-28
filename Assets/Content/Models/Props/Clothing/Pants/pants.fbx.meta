@@ -1,16 +1,15 @@
 fileFormatVersion: 2
-guid: f2dfaf236d6acfa47a3086dcc5d7ff94
+guid: 770065d5e15ad194a98a0d4bf9efe8e8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material
-    2100002: Material.001
+    2100000: primarycolor
+    2100002: secondarycolor
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
-    2186277476908879412: ImportLogs
+    4300000: pants
   externalObjects: {}
   materials:
     importMaterials: 1
