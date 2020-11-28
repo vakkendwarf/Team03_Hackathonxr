@@ -5,32 +5,30 @@ using UnityEngine;
 public class ItemStorage : MonoBehaviour
 {
 
-   
-
     public GameObject manager;
+    //public GameObject collider;
 
-    private HashSet<GameObject> insideObjects;
     private Vector3 position;
 
     public void Start() {
-        if (manager == null) {
-            Debug.LogError("No controler for item storaghe");
-        }
-
-        insideObjects = new HashSet<GameObject>();
-
-        position = gameObject.GetComponentInParent<BoxCollider>().transform.position;
+        //collider = gameObject.GetComponentInParent<BoxCollider>().gameObject;
+        position = transform.position;
     }
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Grabbable")) {
-            if (! insideObjects.Contains(other.gameObject)) {
-                insideObjects.Add(other.gameObject);
-                other.GetComponent<Rigidbody>().isKinematic = true;
-                other.transform.position = position;
-                Debug.Log(other.name);
-                manager.GetComponent<GameManager>().OnItemDeliver(other.gameObject, gameObject);
-            }
+            PlaceObject(other.gameObject);
+            manager.GetComponent<GameManager>().OnItemDeliver(other.gameObject, gameObject);
         }
+    }
+
+    private void PlaceObject(GameObject obj) {
+        Vector3 newPosition = new Vector3(position.x + Random.Range(-1f, 1f) * transform. localScale.x/10f, 
+            position.y + Random.Range(-1f, 1f) * transform.localScale.y/ 10f, 
+            position.z + Random.Range(-1f, 1f) * transform.localScale.x/ 10f);
+        obj.transform.position = newPosition;
+        obj.GetComponent<Rigidbody>().isKinematic = true;
+
+
     }
 
 
