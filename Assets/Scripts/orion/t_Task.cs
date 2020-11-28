@@ -6,5 +6,6 @@ public enum t_Task : uint
 {
     t_begin = 0,
     t_trousers = t_begin + 1,
-    t_towel = t_begin + 2
+    t_towel = t_begin + 2,
+    t_end = t_towel
 }

@@ -5,9 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    ItemStorage[] storages;
     List<t_Task> tasksDone;
-    int room = 0;
     GameObject mum;
 
     void Start()
@@ -32,6 +30,7 @@ public class GameManager : MonoBehaviour
             {
                 //mum throws shoe and shouts --
                 recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
+                recObj.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
     }
@@ -60,6 +59,16 @@ public class GameManager : MonoBehaviour
             }
 
             tasksDone.Add(task);
+
+            if (tasksDone.Count == (int)t_Task.t_end)
+            {
+                EndGame();
+            }
         }
+    }
+
+    void EndGame()
+    {
+        //ggwp
     }
 }
