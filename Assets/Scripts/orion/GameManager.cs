@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     List<t_Task> tasksDone;
     GameObject mum;
-    TextMesh subtitles;
-    t_Task currTask = t_Task.t_trousers;
+    public TextMesh subtitles;
+    t_Task currTask = t_Task.t_socks;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartingSubtitles()
     {
         yield return new WaitForSeconds(7f);
-        subtitles.text = "Start with sorting dirty clothes. \nPut your pants in the dirty clothes basket.";
+        subtitles.text = "Start with sorting dirty clothes. \nPut your socks in the dirty clothes basket.";
     }
 
     IEnumerator ShowCurrTask()
@@ -29,20 +29,25 @@ public class GameManager : MonoBehaviour
 
         switch (currTask)
         {
-            case t_Task.t_trousers:
-                subtitles.text = "Store your underwear in the wardrobe.";
+            case t_Task.t_socks:
+                //subtitles.text = "Store your underwear in the wardrobe.";
+                subtitles.text = "Put your socks in the dirty clothes basket";
                 break;
             case t_Task.t_underwear:
-                subtitles.text = "Put your T-shirt in the dirty clothes basket.";
+                //subtitles.text = "Put your T-shirt in the dirty clothes basket.";
+                subtitles.text = "Store your underwear in the wardrobe.";
                 break;
             case t_Task.t_tshirt:
-                subtitles.text = "Dump the trash to the dumpster.";
+                //subtitles.text = "Dump the trash to the dumpster.";
+                subtitles.text = "Put your T-shirt in the dirty clothes basket.";
                 break;
             case t_Task.t_trash:
-                subtitles.text = "Now collect your books!";
+                //subtitles.text = "Now collect your books!";
+                subtitles.text = "Dump the trash to the dumpster.";
                 break;
             case t_Task.t_books:
-                subtitles.text = "Good job! Your room is finally clean!";
+                //subtitles.text = "Good job! Your room is finally clean!";
+                subtitles.text = "Now collect your books!";
                 break;
             default:
                 break;
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
             {
                 subtitles.text = "No! You are not listening to me!";
                 recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
-                recObj.GetComponent<Rigidbody>().isKinematic = true;
+                recObj.GetComponent<Rigidbody>().isKinematic = false;
                 StartCoroutine(ShowCurrTask());
             }
         }
