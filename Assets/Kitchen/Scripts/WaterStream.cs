@@ -23,6 +23,21 @@ public class WaterStream : MonoBehaviour
 		}
 	}
 
+	private void OnTriggerEnter(Collider other)
+	{
+		Debug.Log("colliding with water");
+
+		var dish = other.gameObject.GetComponent<Dish>();
+		if (dish)
+		{
+			if (dish.isDirty && !dish.isCurrentlyBeingCleaned)
+			{
+				dish.isCurrentlyBeingCleaned = true;
+				StartCoroutine(CheckDistance(dish));
+			}
+		}
+	}
+
 	private IEnumerator CheckDistance(Dish dish)
 	{
 		Debug.Log($"check distance start");
