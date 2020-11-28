@@ -4,11 +4,16 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: dirt
     400000: //RootNode
+    400002: dirt
     2100000: No Name
     2300000: //RootNode
+    2300002: dirt
     3300000: //RootNode
+    3300002: dirt
     4300000: dish
+    4300002: dirt
   externalObjects: {}
   materials:
     importMaterials: 1

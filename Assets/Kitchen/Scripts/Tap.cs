@@ -4,17 +4,48 @@ using UnityEngine;
 
 public class Tap : MonoBehaviour
 {
+	public ParticleSystem particleSystem;
+	public bool opened;
 
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log("colliding");
+		Debug.Log($"colliding, state {opened}");
 
-		var waterStream = GameObject.Find("water_stream");
-		waterStream.GetComponent<MeshRenderer>().enabled = true;
+		Switch(); // should be invoked by hand in VR
 	}
 
-    // Start is called before the first frame update
-    void Start()
+	public void Switch()
+	{
+		if (!opened)
+		{
+			Open();
+		}
+		else
+		{
+			Close();
+		}
+
+		opened = !opened;
+	}
+
+	public void Open()
+	{
+		var waterStream = GameObject.Find("water_stream");
+		waterStream.GetComponent<MeshRenderer>().enabled = true;
+		waterStream.GetComponent<BoxCollider>().enabled = true;
+		particleSystem.Play();
+	}
+
+	public void Close()
+	{
+		var waterStream = GameObject.Find("water_stream");
+		waterStream.GetComponent<MeshRenderer>().enabled = false;
+		waterStream.GetComponent<BoxCollider>().enabled = false;
+		particleSystem.Stop();
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
         
     }
