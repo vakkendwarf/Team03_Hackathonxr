@@ -12,9 +12,16 @@ public class Sponge : MonoBehaviour
 			Destroy(collision.gameObject);
 	}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("colliding with sponge");
+        if (other.gameObject.tag == "dirt")
+            Destroy(other.gameObject);
+    }
 
-	// Start is called before the first frame update
-	void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
         
     }
