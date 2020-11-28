@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    //ItemStorage[] storages;
+    ItemStorage[] storages;
+    List<t_Task> tasksDone;
+    int room = 0;
+    GameObject mum;
 
     void Start()
     {
-        
+        tasksDone = new List<t_Task>();
     }
 
     void Update()
@@ -17,27 +20,41 @@ public class GameManager : MonoBehaviour
         
     }
 
-    //void OnItemDeliver(GameObject recObj, GameObject storage)
-    //{
-    //    if (recObj.tag == "Pickupable")
-    //    {
-    //        if (recObj.GetComponent<Pickupable>().itemStorageToDeliver == storage)
-    //        {
-    //            CompleteTask(recObj.GetComponent<PickupableM>().task);
-    //        }
-    //    }
-    //}
+    public void OnItemDeliver(GameObject recObj, GameObject storage)
+    {
+        if (recObj.tag == "Grabbable")
+        {
+            if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage)
+            {
+                CompleteTask(recObj.GetComponent<PickupableM>().task);
+            }
+        }
+    }
 
     void CompleteTask(t_Task task)
     {
-        switch (task) 
+        bool alreadyCompleted = false;
+        for (int i = 0; i < tasksDone.Count; i++)
         {
-            case t_Task.t_trousers:
-                break;
-            case t_Task.t_towel:
-                break;
-            default:
-                break;
+            if (task == tasksDone[i])
+                alreadyCompleted = true;
+        }
+
+        if (!alreadyCompleted)
+        {
+            switch (task)
+            {
+                case t_Task.t_trousers:
+                    //mum play voice
+                    Debug.Log("trousers delivered");
+                    break;
+                case t_Task.t_towel:
+                    break;
+                default:
+                    break;
+            }
+
+            tasksDone.Add(task);
         }
     }
 }
