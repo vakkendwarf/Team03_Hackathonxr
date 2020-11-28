@@ -1,16 +1,24 @@
 fileFormatVersion: 2
-guid: 843c253605566a4408ad8550cf1c87b1
+guid: 7d088a3fcdd74e748aaee81491974847
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: tap
+    100004: water_stream
     400000: //RootNode
-    2100000: Material.001
-    2100002: Material.002
+    400002: tap
+    400004: water_stream
+    2100000: No Name
     2300000: //RootNode
+    2300002: tap
+    2300004: water_stream
     3300000: //RootNode
-    4300000: Plane
-    2186277476908879412: ImportLogs
+    3300002: tap
+    3300004: water_stream
+    4300000: sink
+    4300002: tap
+    4300004: water_stream
   externalObjects: {}
   materials:
     importMaterials: 1
