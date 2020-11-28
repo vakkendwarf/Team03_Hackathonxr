@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartingSubtitles()
     {
         yield return new WaitForSeconds(7f);
-        subtitles.text = "Start with sorting dirty clothes. Put your pants in the dirty clothes basket.";
+        subtitles.text = "Start with sorting dirty clothes. \nPut your pants in the dirty clothes basket.";
     }
 
     IEnumerator ShowCurrTask()
