@@ -22,7 +22,7 @@ public class BookHandler : MonoBehaviour
     }
 
     public bool BookOnPlace(GameObject book) {
-        if (book.transform.GetChildCount() == 0) {
+        if (book.transform.childCount == 0) {
             booksOnPlace.Add(book);
             foreach (GameObject bookCheck in books) {
                 if (!booksOnPlace.Contains(bookCheck))
