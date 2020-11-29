@@ -6,6 +6,7 @@ public class Dish : MonoBehaviour
 {
 	public bool isDirty;
 
+	public bool isUnderSink;
 	public bool isCurrentlyBeingCleaned;
 
 
@@ -26,4 +27,14 @@ public class Dish : MonoBehaviour
     {
 
     }
+
+	public void SetIsUnderSink(bool value) {
+		if (value) {
+			isUnderSink = true;
+        } else {
+			isUnderSink = false;
+			isCurrentlyBeingCleaned = false;
+        }
+    }
+
 }
