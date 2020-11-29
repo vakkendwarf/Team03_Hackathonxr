@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     GameObject mum;
     public TextMesh subtitles;
     t_Task currTask = t_Task.t_socks;
+    public GameObject player;
 
     private float start_time;
 
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
             }
         }
         /// TELEPORT TO KITCHEN
-        GameObject.FindWithTag("Player").transform.position = new Vector3(12.8f, 0.66f, -13.5f);
+        player.transform.position = new Vector3(12.8f, 0.66f, -13.5f);
     }
 
     void EndGame()
