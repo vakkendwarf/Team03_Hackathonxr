@@ -12,8 +12,16 @@ public class GameManager : MonoBehaviour
 
     private float start_time;
 
+    public AudioSource audioSource;
+
+
+    public List<AudioClip> clip_list;
+
 
     public GameObject bookHandler;
+
+
+    //TODO implement different audio clips
 
     void Start()
     {
@@ -26,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         subtitles.text = "Start with sorting dirty clothes. \nPut your socks in the dirty clothes basket.";
+        PlayAudio(clip_list[0]);
     }
 
     string[] yiellings = {
@@ -52,22 +61,27 @@ public class GameManager : MonoBehaviour
             case t_Task.t_socks:
                 //subtitles.text = "Store your underwear in the wardrobe.";
                 subtitles.text = "Put your socks in the dirty clothes basket";
+                PlayAudio(clip_list[0]);
                 break;
             case t_Task.t_underwear:
                 //subtitles.text = "Put your T-shirt in the dirty clothes basket.";
                 subtitles.text = "Store your underwear in the wardrobe.";
+                PlayAudio(clip_list[0]);
                 break;
             case t_Task.t_tshirt:
                 //subtitles.text = "Dump the trash to the dumpster.";
                 subtitles.text = "Put your T-shirt in the dirty clothes basket.";
+                PlayAudio(clip_list[0]);
                 break;
             case t_Task.t_trash:
                 //subtitles.text = "Now collect your books!";
                 subtitles.text = "Dump the trash to the dumpster.";
+                PlayAudio(clip_list[0]);
                 break;
             case t_Task.t_books:
                 //subtitles.text = "Good job! Your room is finally clean!";
                 subtitles.text = "Now collect your books! Novel on upper shelf,\neducational below.";
+                PlayAudio(clip_list[0]);
                 break;
             case t_Task.t_teleport:
                 subtitles.text = "Last thing before you're free, clean dishes in kitchen.";
@@ -75,6 +89,7 @@ public class GameManager : MonoBehaviour
                 break;
             case t_Task.t_dishes:
                 subtitles.text = "Grab each dish, clean it with sponge under\nthe sink and put out to the right.";
+                PlayAudio(clip_list[0]);
                 break;
             default:
                 break;
@@ -111,6 +126,7 @@ public class GameManager : MonoBehaviour
                     gameObject.GetComponent<SpawnToRandomizer>().sendToRandomizer(recObj);
                 } else {
                     subtitles.text = yiellings[(int)Mathf.Floor(Random.value * yiellings.Length)];
+                    PlayAudio(clip_list[0]);
                     //subtitles.text = "No! You are not listening to me!";
                     recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
                     recObj.GetComponent<Rigidbody>().isKinematic = false;
@@ -170,5 +186,15 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         //ggwp
+    }
+
+
+    private void PlayAudio(AudioClip clip)
+    {
+        if (audioSource)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
     }
 }
