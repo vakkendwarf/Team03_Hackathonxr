@@ -6,12 +6,13 @@ public class BookHandler : MonoBehaviour
 {
 
     [SerializeField]
-    HashSet<GameObject> books;
+    List<GameObject> books;
+
     HashSet<GameObject> booksOnPlace;
     // Start is called before the first frame update
     void Start()
     {
-        
+        booksOnPlace = new HashSet<GameObject>();
     }
 
     // Update is called once per frame

@@ -7,7 +7,7 @@ public class TaskObject : MonoBehaviour
     public GameObject sibling;
 
    
-    private void Disable() {
+    public void Disable() {
         sibling.SetActive(true);
         gameObject.SetActive(false);
     }
