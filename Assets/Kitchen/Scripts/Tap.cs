@@ -47,7 +47,7 @@ public class Tap : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
+		particleSystem.Stop();
     }
 
     // Update is called once per frame

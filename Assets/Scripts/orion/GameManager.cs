@@ -10,10 +10,15 @@ public class GameManager : MonoBehaviour
     public TextMesh subtitles;
     t_Task currTask = t_Task.t_socks;
 
+    private float start_time;
+
+
+    public GameObject bookHandler;
+
     void Start()
     {
         tasksDone = new List<t_Task>();
-
+        start_time = Time.time;
         StartCoroutine(StartingSubtitles());
     }
 
@@ -22,6 +27,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(7f);
         subtitles.text = "Start with sorting dirty clothes. \nPut your socks in the dirty clothes basket.";
     }
+
+    string[] yiellings = {
+        "No! You are not listening to me!",
+        "Why are you so stubborn?",
+        "Do I speak slurredly?",
+        "Your father will be mad!"
+    };
+    string[] praising = {
+        "Good job!",
+        "That's my son!",
+        "You are really smart little man.",
+        "Keep going!",
+        "Perfect!",
+        "Excellent!"
+    };
 
     IEnumerator ShowCurrTask()
     {
@@ -47,7 +67,7 @@ public class GameManager : MonoBehaviour
                 break;
             case t_Task.t_books:
                 //subtitles.text = "Good job! Your room is finally clean!";
-                subtitles.text = "Now collect your books!";
+                subtitles.text = "Now collect your books! Novel on upper shelf,\neducational below.";
                 break;
             default:
                 break;
@@ -63,17 +83,32 @@ public class GameManager : MonoBehaviour
     {
         if (recObj.tag == "Grabbable")
         {
-            if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage && currTask == recObj.GetComponent<PickupableM>().task)
+            if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage )
             {
-                CompleteTask(recObj.GetComponent<PickupableM>().task);
-                return true;
+                if (currTask == t_Task.t_books) {
+                    if (bookHandler.GetComponent<BookHandler>().BookOnPlace(recObj)) {
+                        CompleteTask(recObj.GetComponent<PickupableM>().task);
+                    }
+                    subtitles.text = praising[(int)Mathf.Floor(Random.value * praising.Length)];
+                    return true;
+                }
+                else if (currTask == recObj.GetComponent<PickupableM>().task) {
+                    CompleteTask(recObj.GetComponent<PickupableM>().task);
+                    return true;
+                }
             }
             else
             {
-                subtitles.text = "No! You are not listening to me!";
-                recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
-                recObj.GetComponent<Rigidbody>().isKinematic = false;
-                StartCoroutine(ShowCurrTask());
+                // if game just started 
+                if (Time.time - start_time < 4f) {
+                    gameObject.GetComponent<SpawnToRandomizer>().sendToRandomizer(recObj);
+                } else {
+                    subtitles.text = yiellings[(int)Mathf.Floor(Random.value * yiellings.Length)];
+                    //subtitles.text = "No! You are not listening to me!";
+                    recObj.transform.position = recObj.GetComponent<PickupableM>().startingPos;
+                    recObj.GetComponent<Rigidbody>().isKinematic = false;
+                    StartCoroutine(ShowCurrTask());
+                }
             }
         }
         return false;
@@ -93,7 +128,7 @@ public class GameManager : MonoBehaviour
             tasksDone.Add(task);
             currTask = task + 1;
 
-            subtitles.text = "Good job!";
+            subtitles.text = praising[(int)Mathf.Floor(Random.value * praising.Length)];
             StartCoroutine(ShowCurrTask());
 
             if (tasksDone.Count == (int)t_Task.t_end)

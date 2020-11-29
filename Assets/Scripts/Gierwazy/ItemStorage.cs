@@ -25,7 +25,7 @@ public class ItemStorage : MonoBehaviour
         if (other.CompareTag("Grabbable")) {
             /*PlaceObject(other.gameObject);*/
             if (manager.GetComponent<GameManager>().OnItemDeliver(other.gameObject, gameObject))
-                other.gameObject.SetActive(false);
+                other.gameObject.GetComponent< TaskObject>().Disable();
         }
     }
 
