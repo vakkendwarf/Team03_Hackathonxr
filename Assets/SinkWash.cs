@@ -23,6 +23,7 @@ public class SinkWash : MonoBehaviour
         // check whether it is dish
         if (other.GetComponent<Dish>() != null) {
             other.GetComponent<Dish>().SetIsUnderSink(true);
+
         }
     }
 
