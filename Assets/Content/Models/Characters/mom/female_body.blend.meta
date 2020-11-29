@@ -4,7 +4,71 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Armature
+    100004: Bone
+    100006: Bone.001
+    100008: Bone.002
+    100010: Bone.003
+    100012: Bone.004
+    100014: Bone.005
+    100016: Bone.005_end
+    100018: Bone.006
+    100020: Bone.007
+    100022: Bone.008
+    100024: Bone.009
+    100026: Bone.009_end
+    100028: Bone.010
+    100030: Bone.011
+    100032: Bone.012
+    100034: Bone.013
+    100036: Bone.013_end
+    100038: Bone.014
+    100040: Bone.015
+    100042: Bone.016
+    100044: Bone.016_end
+    100046: Bone.017
+    100048: Bone.018
+    100050: Bone.019
+    100052: Bone.019_end
+    100054: Plane
     400000: //RootNode
+
+    400002: Armature
+    400004: Bone
+    400006: Bone.001
+    400008: Bone.002
+    400010: Bone.003
+    400012: Bone.004
+    400014: Bone.005
+    400016: Bone.005_end
+    400018: Bone.006
+    400020: Bone.007
+    400022: Bone.008
+    400024: Bone.009
+    400026: Bone.009_end
+    400028: Bone.010
+    400030: Bone.011
+    400032: Bone.012
+    400034: Bone.013
+    400036: Bone.013_end
+    400038: Bone.014
+    400040: Bone.015
+    400042: Bone.016
+    400044: Bone.016_end
+    400046: Bone.017
+    400048: Bone.018
+    400050: Bone.019
+    400052: Bone.019_end
+    400054: Plane
+    2100000: Material.004
+    2100002: Material.006
+    2100004: Material.003
+    2100006: Material.002
+    2100008: None
+    2100010: Material.001
+    2300000: Plane
+    3300000: Plane
+    4300000: Plane
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
