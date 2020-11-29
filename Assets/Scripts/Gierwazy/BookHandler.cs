@@ -22,10 +22,12 @@ public class BookHandler : MonoBehaviour
     }
 
     public bool BookOnPlace(GameObject book) {
-        booksOnPlace.Add(book);
-        foreach (GameObject bookCheck in books) {
-            if (!booksOnPlace.Contains(bookCheck))
-                return false;
+        if (book.transform.GetChildCount() == 0) {
+            booksOnPlace.Add(book);
+            foreach (GameObject bookCheck in books) {
+                if (!booksOnPlace.Contains(bookCheck))
+                    return false;
+            }
         }
         return true;
     }

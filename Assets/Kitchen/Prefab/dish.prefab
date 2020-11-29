@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8972595169293950001}
   - component: {fileID: 8972595169295048433}
   - component: {fileID: 5236846797565962348}
+  - component: {fileID: 461281458676590138}
   m_Layer: 0
   m_Name: dirt
-  m_TagString: Untagged
+  m_TagString: dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +92,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07145668, y: 0.075463235, z: 0.033649623}
   m_Center: {x: -0.0005566646, y: -0.0020597982, z: -0.001100377}
+--- !u!114 &461281458676590138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972595169292779569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2581e77fb5ebb7f41aee0e55a6a6e07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8972595169292779571
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDirty: 0
+  isUnderSink: 0
   isCurrentlyBeingCleaned: 0
 --- !u!114 &8668593286942707249
 MonoBehaviour:

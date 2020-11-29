@@ -8,15 +8,23 @@ public class Sponge : MonoBehaviour
 	void OnCollisionEnter(Collision collision)
 	{
 		Debug.Log("colliding with sponge");
-		if(collision.gameObject.tag == "dirt")
-			Destroy(collision.gameObject);
+        if (collision.gameObject.tag == "dirt")
+            //Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Dirt>().TouchedBySponge(true);
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("colliding with sponge");
         if (other.gameObject.tag == "dirt")
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.GetComponent<Dirt>().TouchedBySponge(true);
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "dirt")
+            //Destroy(other.gameObject);
+            other.gameObject.GetComponent<Dirt>().TouchedBySponge(false);
     }
 
 
