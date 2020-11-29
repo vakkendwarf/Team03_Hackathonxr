@@ -22,13 +22,14 @@ public class SinkWash : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         // check whether it is dish
         if (other.GetComponent<Dish>() != null) {
-            other.GetComponent<Dish>().isUnderSink = true;
+            other.GetComponent<Dish>().SetIsUnderSink(true);
+
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.GetComponent<Dish>() != null) {
-            other.GetComponent<Dish>().isUnderSink = false;
+            other.GetComponent<Dish>().SetIsUnderSink(false);
         }
     }
 }
