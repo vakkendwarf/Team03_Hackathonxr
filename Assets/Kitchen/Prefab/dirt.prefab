@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 785406370182007703}
   - component: {fileID: 785406370183006551}
   - component: {fileID: 785406370785501329}
+  - component: {fileID: 114459039204695992}
   m_Layer: 0
   m_Name: dirt
   m_TagString: dirt
@@ -91,3 +92,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.039829325, y: 0.056208532, z: 0.02584089}
   m_Center: {x: 0.0075640096, y: -0.016953174, z: 0.0012130758}
+--- !u!114 &114459039204695992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785406370185009047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2581e77fb5ebb7f41aee0e55a6a6e07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

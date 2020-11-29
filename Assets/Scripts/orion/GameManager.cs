@@ -69,6 +69,13 @@ public class GameManager : MonoBehaviour
                 //subtitles.text = "Good job! Your room is finally clean!";
                 subtitles.text = "Now collect your books! Novel on upper shelf,\neducational below.";
                 break;
+            case t_Task.t_teleport:
+                subtitles.text = "Last thing before you're free, clean dishes in kitchen.";
+                StartCoroutine(IECompleteTask(t_Task.t_teleport));
+                break;
+            case t_Task.t_dishes:
+                subtitles.text = "Grab each dish, clean it with sponge under\nthe sink and put out to the right.";
+                break;
             default:
                 break;
         }
@@ -85,7 +92,7 @@ public class GameManager : MonoBehaviour
         {
             if (recObj.GetComponent<PickupableM>().itemStorageToDeliver == storage )
             {
-                if (currTask == t_Task.t_books) {
+                if (currTask == t_Task.t_books || currTask == t_Task.t_dishes) {
                     if (bookHandler.GetComponent<BookHandler>().BookOnPlace(recObj)) {
                         CompleteTask(recObj.GetComponent<PickupableM>().task);
                     }
@@ -136,6 +143,28 @@ public class GameManager : MonoBehaviour
                 EndGame();
             }
         }
+    }
+
+    IEnumerator IECompleteTask(t_Task task) {
+        bool alreadyCompleted = false;
+        for (int i = 0; i < tasksDone.Count; i++) {
+            if (task == tasksDone[i])
+                alreadyCompleted = true;
+        }
+
+        if (!alreadyCompleted) {
+            tasksDone.Add(task);
+            currTask = task + 1;
+
+            subtitles.text = praising[(int)Mathf.Floor(Random.value * praising.Length)];
+            StartCoroutine(ShowCurrTask());
+
+            if (tasksDone.Count == (int)t_Task.t_end) {
+                EndGame();
+            }
+        }
+        yield return new WaitForSeconds(4f);
+        /// TELEPORT TO KITCHEN
     }
 
     void EndGame()
