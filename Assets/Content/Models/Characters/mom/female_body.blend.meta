@@ -32,6 +32,7 @@ ModelImporter:
     100052: Bone.019_end
     100054: Plane
     400000: //RootNode
+
     400002: Armature
     400004: Bone
     400006: Bone.001

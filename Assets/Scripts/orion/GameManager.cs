@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     GameObject mum;
     public TextMesh subtitles;
     t_Task currTask = t_Task.t_socks;
+    public GameObject player;
 
     private float start_time;
 
 
     public GameObject bookHandler;
+    public GameObject dishHandler;
 
     void Start()
     {
@@ -98,8 +100,13 @@ public class GameManager : MonoBehaviour
                     }
                     subtitles.text = praising[(int)Mathf.Floor(Random.value * praising.Length)];
                     return true;
-                }
-                else if (currTask == recObj.GetComponent<PickupableM>().task) {
+                } else if (currTask == t_Task.t_dishes) {
+                    if (dishHandler.GetComponent<BookHandler>().BookOnPlace(recObj)) {
+                        CompleteTask(recObj.GetComponent<PickupableM>().task);
+                    }
+                    subtitles.text = praising[(int)Mathf.Floor(Random.value * praising.Length)];
+                    return true;
+                } else if (currTask == recObj.GetComponent<PickupableM>().task) {
                     CompleteTask(recObj.GetComponent<PickupableM>().task);
                     return true;
                 }
@@ -146,6 +153,7 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator IECompleteTask(t_Task task) {
+        yield return new WaitForSeconds(4f);
         bool alreadyCompleted = false;
         for (int i = 0; i < tasksDone.Count; i++) {
             if (task == tasksDone[i])
@@ -163,8 +171,8 @@ public class GameManager : MonoBehaviour
                 EndGame();
             }
         }
-        yield return new WaitForSeconds(4f);
         /// TELEPORT TO KITCHEN
+        player.transform.position = new Vector3(12.8f, 0.66f, -13.5f);
     }
 
     void EndGame()
